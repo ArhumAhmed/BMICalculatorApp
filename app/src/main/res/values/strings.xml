@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BMI Calculator</string>
+    <string-array name="units">
+        <item>Imperial</item>
+        <item>Metric</item>
+    </string-array>
+</resources>
