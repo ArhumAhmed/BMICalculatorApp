@@ -1,25 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<FrameLayout
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_alignParentStart="true"
-    android:layout_alignParentTop="true"
-    android:background="#FFFFFF">
-
-
-
-    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
-        /> <!--ca-app-pub-3011145604783069/7398296452 is mine-->
-
-
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -30,11 +9,12 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="0dp"
-        android:layout_height="38dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="19dp"
+        android:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toTopOf="@+id/inView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lbsView"
@@ -64,6 +44,21 @@
         android:inputType="numberDecimal"
         android:maxLength="3"
         android:textSize="26sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/lbsView"
+        app:layout_constraintStart_toEndOf="@+id/weightView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/kg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="3"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:maxLength="3"
+        android:textSize="26sp"
+        android:visibility="visible"
         app:layout_constraintEnd_toStartOf="@+id/lbsView"
         app:layout_constraintStart_toEndOf="@+id/weightView"
         app:layout_constraintTop_toTopOf="parent" />
@@ -119,6 +114,20 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/inView"
         app:layout_constraintStart_toStartOf="@+id/lbsView" />
 
+    <EditText
+        android:id="@+id/cm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ems="3"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="3"
+        android:textSize="26sp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/weight"
+        app:layout_constraintTop_toBottomOf="@+id/weight" />
+
     <TextView
         android:id="@+id/bmiView"
         android:layout_width="wrap_content"
@@ -148,10 +157,24 @@
         android:id="@+id/lbsView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="55dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="30dp"
         android:text="lbs"
         android:textSize="26sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintStart_toEndOf="@+id/weight"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/kgView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="20dp"
+        android:text="kg"
+        android:textSize="26sp"
+        android:visibility="visible"
         app:layout_constraintEnd_toStartOf="@+id/spinner"
         app:layout_constraintStart_toEndOf="@+id/weight"
         app:layout_constraintTop_toTopOf="parent" />
@@ -177,6 +200,18 @@
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintStart_toEndOf="@+id/inches" />
+
+    <TextView
+        android:id="@+id/cmView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="9dp"
+        android:text="cm"
+        android:textSize="26sp"
+        android:visibility="visible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/cm"
+        app:layout_constraintStart_toEndOf="@+id/cm" />
 
     <View
         android:id="@+id/divider"
@@ -363,330 +398,17 @@
         app:layout_constraintEnd_toEndOf="@+id/range7"
         app:layout_constraintTop_toBottomOf="@+id/range7" />
 
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/metric"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        tools:context=".MainActivity"
-        tools:layout_editor_absoluteY="81dp">
-
-        <TextView
-            android:id="@+id/weightViewM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="21dp"
-            android:layout_marginEnd="14dp"
-            android:text="Weight:"
-            android:textSize="26sp"
-            app:layout_constraintEnd_toStartOf="@+id/weightKG"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/weightKG"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:ems="3"
-            android:gravity="center"
-            android:inputType="numberDecimal"
-            android:maxLength="3"
-            android:textSize="26sp"
-            app:layout_constraintEnd_toStartOf="@+id/weightViewM"
-            app:layout_constraintStart_toEndOf="@+id/weightViewM"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/calcM"
-            android:layout_width="160dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="72dp"
-            android:layout_marginBottom="69dp"
-            android:onClick="calculate"
-            android:text="Calculate"
-            android:textSize="22sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/cat7M" />
-
-        <TextView
-            android:id="@+id/heightViewM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="19dp"
-            android:layout_marginBottom="13dp"
-            android:text="Height:"
-            android:textSize="26sp"
-            app:layout_constraintBottom_toTopOf="@+id/dividerM"
-            app:layout_constraintStart_toStartOf="@+id/dividerM" />
-
-        <EditText
-            android:id="@+id/cm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:ems="3"
-            android:gravity="center"
-            android:inputType="number"
-            android:maxLength="3"
-            android:textSize="26sp"
-            app:layout_constraintStart_toStartOf="@+id/weightKG"
-            app:layout_constraintTop_toBottomOf="@+id/weightKG" />
-
-        <TextView
-            android:id="@+id/bmiViewM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:text="BMI: "
-            android:textSize="26sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dividerM" />
-
-        <TextView
-            android:id="@+id/bmiOutputM"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="42dp"
-            android:layout_marginEnd="25dp"
-            android:gravity="right"
-            android:textColor="@color/colorAccent"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="@+id/dividerM"
-            app:layout_constraintStart_toStartOf="@+id/textView11M"
-            app:layout_constraintTop_toBottomOf="@+id/cmView" />
-
-        <TextView
-            android:id="@+id/kgView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="62dp"
-            android:text="kg"
-            android:textSize="26sp"
-            app:layout_constraintEnd_toStartOf="@+id/spinnerM"
-            app:layout_constraintStart_toEndOf="@+id/weightKG"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/cmView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:text="cm"
-            android:textSize="26sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/cm"
-            app:layout_constraintStart_toEndOf="@+id/cm" />
-
-        <View
-            android:id="@+id/dividerM"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="58dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="58dp"
-            android:background="@color/colorPrimary"
-            app:layout_constraintBottom_toBottomOf="@+id/bmiOutputM"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/cmView" />
-
-        <TextView
-            android:id="@+id/catViewM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:text="Category"
-            android:textSize="26sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bmiViewM" />
-
-        <TextView
-            android:id="@+id/textView11M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="2dp"
-            android:text="BMI Range"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="@+id/range1M"
-            app:layout_constraintTop_toBottomOf="@+id/bmiOutputM" />
-
-        <TextView
-            android:id="@+id/cat1M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Very Severely Underweight"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/catViewM"
-            app:layout_constraintStart_toEndOf="@+id/catViewM"
-            app:layout_constraintTop_toBottomOf="@+id/catViewM" />
-
-        <TextView
-            android:id="@+id/cat2M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Severely Underweight"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/cat1M"
-            app:layout_constraintTop_toBottomOf="@+id/cat1M" />
-
-        <TextView
-            android:id="@+id/cat3M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Underweight"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/cat2M"
-            app:layout_constraintTop_toBottomOf="@+id/cat2M" />
-
-        <TextView
-            android:id="@+id/cat4M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Normal"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/cat3M"
-            app:layout_constraintTop_toBottomOf="@+id/cat3M" />
-
-        <TextView
-            android:id="@+id/cat5M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Overweight"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/cat4M"
-            app:layout_constraintTop_toBottomOf="@+id/cat4M" />
-
-        <TextView
-            android:id="@+id/cat6M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Obese Class I"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/cat5M"
-            app:layout_constraintTop_toBottomOf="@+id/cat5M" />
-
-        <TextView
-            android:id="@+id/cat7M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Obese Class II"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/cat6M"
-            app:layout_constraintTop_toBottomOf="@+id/cat6M" />
-
-        <TextView
-            android:id="@+id/cat8M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Obese Class III"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/cat7M"
-            app:layout_constraintTop_toBottomOf="@+id/cat7M" />
-
-        <TextView
-            android:id="@+id/range1M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="21dp"
-            android:layout_marginEnd="31dp"
-            android:text=" &lt; 16.0"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11M" />
-
-        <TextView
-            android:id="@+id/range2M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="16 .0- 17.0"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/range1M"
-            app:layout_constraintTop_toBottomOf="@+id/range1M" />
-
-        <TextView
-            android:id="@+id/range3M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="17.0 - 18.5"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/range2M"
-            app:layout_constraintTop_toBottomOf="@+id/range2M" />
-
-        <TextView
-            android:id="@+id/range4M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="18.5 - 25.0"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/range3M"
-            app:layout_constraintTop_toBottomOf="@+id/range3M" />
-
-        <TextView
-            android:id="@+id/range5M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="25.0 - 30.0"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/range4M"
-            app:layout_constraintTop_toBottomOf="@+id/range4M" />
-
-        <TextView
-            android:id="@+id/range6M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="30.0 - 35.0"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/range5M"
-            app:layout_constraintTop_toBottomOf="@+id/range5M" />
-
-        <TextView
-            android:id="@+id/range7M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="35.0 - 40.0"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/range6M"
-            app:layout_constraintTop_toBottomOf="@+id/range6M" />
-
-        <TextView
-            android:id="@+id/range8M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="7dp"
-            android:text="&gt; 40.0"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/range7M"
-            app:layout_constraintTop_toBottomOf="@+id/range7M" />
-
-        <Spinner
-            android:id="@+id/spinnerM"
-            android:layout_width="0dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="18dp"
-            app:layout_constraintBottom_toTopOf="@+id/cmView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/kgView"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!--ca-app-pub-3011145604783069/7398296452 is mine-->
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calc"
+        app:layout_constraintVertical_bias="1.0" />
 
     </android.support.constraint.ConstraintLayout>
-
-
-</FrameLayout>
