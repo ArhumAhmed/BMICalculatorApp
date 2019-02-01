@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/imperial"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
@@ -67,7 +68,7 @@
         android:ems="3"
         android:gravity="center"
         android:inputType="number"
-        android:maxLength="1"
+        android:maxLength="3"
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="@+id/weight"
         app:layout_constraintTop_toBottomOf="@+id/weight" />
@@ -332,3 +333,4 @@
     <!--ca-app-pub-3011145604783069/7398296452 is mine-->
 
 </android.support.constraint.ConstraintLayout>
+

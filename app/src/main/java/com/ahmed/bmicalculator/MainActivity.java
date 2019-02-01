@@ -1,5 +1,6 @@
 package com.ahmed.bmicalculator;
 
+
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -43,15 +44,13 @@ public class MainActivity extends AppCompatActivity {
                 switch (i)   //Switch case to determine which period is selected
                 {
                     case 0:   //Imperial selected
-                        //setContentView(R.layout.activity_main);
+
                         break;
                     case 1:   //Metric Selected
-                        setContentView(R.layout.metric);
+
                         break;
 
                     default:   // Should never occur, but if so, treat as imperial
-                        setContentView(R.layout.activity_main);
-
                 }
             }
 
