@@ -7,14 +7,30 @@
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="19dp"
+        android:backgroundTint="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/inView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lbsView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <TextView
         android:id="@+id/weightView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="27dp"
         android:layout_marginTop="21dp"
+        android:layout_marginEnd="14dp"
         android:text="Weight:"
         android:textSize="26sp"
+        app:layout_constraintEnd_toStartOf="@+id/weight"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,15 +38,29 @@
         android:id="@+id/weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="147dp"
-        android:layout_marginEnd="147dp"
+        android:layout_marginEnd="13dp"
         android:ems="3"
         android:gravity="center"
         android:inputType="numberDecimal"
         android:maxLength="3"
         android:textSize="26sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/bmiView"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/lbsView"
+        app:layout_constraintStart_toEndOf="@+id/weightView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/kg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="3"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:maxLength="3"
+        android:textSize="26sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/lbsView"
+        app:layout_constraintStart_toEndOf="@+id/weightView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -75,15 +105,28 @@
         android:id="@+id/inches"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="1dp"
         android:ems="2"
         android:gravity="center"
         android:inputType="number"
         android:maxLength="2"
         android:textSize="26sp"
-        app:layout_constraintStart_toStartOf="@+id/lbsView"
-        app:layout_constraintTop_toBottomOf="@+id/lbsView" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/inView"
+        app:layout_constraintStart_toStartOf="@+id/lbsView" />
+
+    <EditText
+        android:id="@+id/cm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ems="3"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="3"
+        android:textSize="26sp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/weight"
+        app:layout_constraintTop_toBottomOf="@+id/weight" />
 
     <TextView
         android:id="@+id/bmiView"
@@ -100,24 +143,39 @@
         android:id="@+id/bmiOutput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="149dp"
+        android:layout_marginEnd="25dp"
         android:gravity="right"
         android:textColor="@color/colorAccent"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="@+id/range1"
-        app:layout_constraintStart_toStartOf="@+id/lbsView"
-        app:layout_constraintTop_toBottomOf="@+id/inches" />
+        app:layout_constraintEnd_toEndOf="@+id/divider"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/lbsView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="30dp"
         android:text="lbs"
         android:textSize="26sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintStart_toEndOf="@+id/weight"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/kgView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="20dp"
+        android:text="kg"
+        android:textSize="26sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/spinner"
         app:layout_constraintStart_toEndOf="@+id/weight"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -125,7 +183,7 @@
         android:id="@+id/ftView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="13dp"
         android:layout_marginBottom="9dp"
         android:text="ft"
         android:textSize="26sp"
@@ -136,11 +194,24 @@
         android:id="@+id/inView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginBottom="22dp"
         android:text="in"
         android:textSize="26sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/inches"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintStart_toEndOf="@+id/inches" />
+
+    <TextView
+        android:id="@+id/cmView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="9dp"
+        android:text="cm"
+        android:textSize="26sp"
+        android:visibility="visible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/cm"
+        app:layout_constraintStart_toEndOf="@+id/cm" />
 
     <View
         android:id="@+id/divider"
@@ -154,7 +225,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/bmiOutput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/inView" />
+        app:layout_constraintTop_toTopOf="@+id/ftView" />
 
     <TextView
         android:id="@+id/catView"
@@ -172,9 +243,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="2dp"
         android:text="BMI Range"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/bmiOutput"
+        app:layout_constraintEnd_toEndOf="@+id/range1"
         app:layout_constraintTop_toBottomOf="@+id/bmiOutput" />
 
     <TextView
@@ -256,7 +328,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="31dp"
         android:text=" &lt; 16.0"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -320,28 +392,23 @@
         android:id="@+id/range8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="6dp"
+        android:layout_marginEnd="7dp"
         android:text="&gt; 40.0"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/range7"
         app:layout_constraintTop_toBottomOf="@+id/range7" />
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3011145604783069/7398296452"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calc"
-        app:layout_constraintVertical_bias="1.0" /> <!--ca-app-pub-3011145604783069/7398296452 is mine-->
+        app:layout_constraintVertical_bias="1.0" />
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
